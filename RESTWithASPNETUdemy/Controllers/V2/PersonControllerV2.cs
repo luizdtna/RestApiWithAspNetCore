@@ -5,17 +5,17 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RESTWithASPNETUdemy.Controllers.V1
+namespace RESTWithASPNETUdemy.Controllers.V2
 {
-    [ApiVersion("1")]
+    [ApiVersion("2")]
     [ApiController]
-    [Route("api/v{version:apiVersion}/[controller]")]
-    public class PersonController2 : ControllerBase
+    [Route("api/v{version:apiVersion}/persons")]
+    public class PersonControllerV2 : ControllerBase
     {
         private readonly IPersonService _personService;
-        private readonly ILogger<PersonController2> _logger;
+        private readonly ILogger<PersonControllerV2> _logger;
 
-        public PersonController2(ILogger<PersonController2> logger, IPersonService personService)
+        public PersonControllerV2(ILogger<PersonControllerV2> logger, IPersonService personService)
         {
             _logger = logger;
             _personService = personService;
@@ -30,8 +30,8 @@ namespace RESTWithASPNETUdemy.Controllers.V1
             return Ok(persons);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Get(long id)
+        [HttpGet("{id}/{name}")]
+        public IActionResult Get(long id, string name)
         {
             var person = _personService.FindByID(id);
             if (person == null)

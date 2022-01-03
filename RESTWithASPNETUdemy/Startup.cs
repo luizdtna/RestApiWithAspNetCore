@@ -74,6 +74,7 @@ namespace RESTWithASPNETUdemy
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RESTWithASPNETUdemy", Version = "v1" });
+                c.SwaggerDoc("v2", new OpenApiInfo { Title = "RESTWithASPNETUdemy", Version = "v2" });
             });
         }
 
